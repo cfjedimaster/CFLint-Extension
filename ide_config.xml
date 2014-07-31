@@ -1,0 +1,22 @@
+<application>
+
+	<name>CFLint</name>
+	<author>Raymond Camden</author>
+	<version>1</version>
+	<email>raymondcamden@gmail.com</email>	
+	<description>Extension for the CFLint project (https://github.com/ryaneberly/CFLint)</description>
+    <menucontributions>
+
+		<contribution target="projectview">
+			<menu name="CFLint Options">
+		    		<action name="Run CFLint" handlerid="doLint" showResponse="true" />
+			</menu>
+		</contribution>			
+
+    </menucontributions>	
+
+	<handlers>		
+		<handler id="doLint" type="CFM" filename="runlint.cfm" />
+	</handlers>
+
+</application>
