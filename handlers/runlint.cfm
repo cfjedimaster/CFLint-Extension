@@ -1,3 +1,4 @@
+<cfsetting showdebugoutput="false">
 <cfscript>
 helper = new builderHelper(form.ideEventInfo);
 linter = createObject("java","com.cflint.CFLint");

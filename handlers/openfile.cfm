@@ -1,4 +1,4 @@
-<cflog text="#serializejson(url)#">
+<cfsetting showdebugoutput="false">
 
 <cfsavecontent variable="commandxml" > 
 <cfoutput> 

@@ -15,3 +15,7 @@ the full version of ColdFusion Builder. The Express edition does not support "ca
 I handle opening files from the extension.
 
 In theory it could be backported to ColdFusion 9 if JavaLoader was used.
+
+Updates
+===
+[8/5/2014] Disabled cf debugging and removed a log.
