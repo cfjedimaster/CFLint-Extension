@@ -18,4 +18,5 @@ In theory it could be backported to ColdFusion 9 if JavaLoader was used.
 
 Updates
 ===
+[8/6/2014] Removed a log.
 [8/5/2014] Disabled cf debugging and removed a log.

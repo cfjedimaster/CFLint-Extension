@@ -45,7 +45,6 @@ for(type in bugStruct) {
 cbUrl = helper.getCallbackURL();
 </cfscript>
 
-<cflog text="run cflint3">
 <cfheader name="Content-Type" value="text/xml">
 <response showresponse="true">
 <ide>
