@@ -1,7 +1,24 @@
 <cfsetting showdebugoutput="false">
 <cfscript>
 helper = new builderHelper(form.ideEventInfo);
-linter = createObject("java","com.cflint.CFLint");
+
+/*
+Per @TheRealAgentK:  There's no empty CFLint constructor anymore.
+You'll need to pass in a configuration object.
+*/
+
+configUtils = createObject("java","com.cflint.config.ConfigUtils");
+
+pluginInfo = createObject("java","com.cflint.config.CFLintPluginInfo");
+pluginInfo = configUtils.loadDefaultPluginInfo();
+
+defaultConfig = createObject("java","com.cflint.config.CFLintConfig") ;
+defaultConfig.setRules(pluginInfo.getRules());
+
+myConfig = createObject("java","com.cflint.config.CFLintChainedConfig").init(defaultConfig);
+
+// create linter object and pass in default config
+linter = createObject("java","com.cflint.CFLint").init(myConfig);
 
 selection = helper.getSelectedResource();
 //get the project, this is not currently supported by my helper, may add it in later
@@ -30,13 +47,13 @@ bugArr = [];
 for(type in bugStruct) {
 	for(i=1; i<=arrayLen(bugStruct[type]); i++) {
 		bug = bugStruct[type][i];
-		newBug = {
-			message:bug.getMessage(),
-			severity:bug.getSeverity(),
-			file:bug.getFilename(),
-			displayFile:replace(bug.getFilename(),projectLocation, ""),
-			line:bug.getLine(),
-			column:bug.getColumn()
+		"newBug" = {
+			"message":bug.getMessage(),
+			"severity":bug.getSeverity(),
+			"file":bug.getFilename(),
+			"displayFile":replace(bug.getFilename(),projectLocation, ""),
+			"line":bug.getLine(),
+			"column":bug.getColumn()
 		};
 		arrayAppend(bugArr, newBug);
 	}
